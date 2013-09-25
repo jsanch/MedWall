@@ -1,0 +1,37 @@
+.row-fluid
+  .span6
+    %img.logo-left{src: "https://secure.mymedwall.com/phr/Images/MyMed/MainLogo.png"}/
+  .span6
+    %img.logo-right{src: "http://i.imgur.com/R1r1xQn.png"}/
+.navbar
+  .navbar-inner
+    .container
+      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{href: "http://localhost:3000"} MyMedWall CHAD Services
+      .nav-collapse.collapse
+        %ul.nav
+          %li.divider-vertical
+          %li{class: "customhovercolor #{'active' if params[:controller] == 'patients'}"}
+            %a{href: ""} Patients
+          %li.divider-vertical
+          %li{class: "customhovercolor #{'active' if params[:controller] == 'providers'}"}
+            %a{href: "providers"} Providers
+          %li.divider-vertical
+          %li{class: "customhovercolor #{'active' if params[:controller] == 'partners'}"}
+            %a{href: "partners"} Partners
+          %li.divider-vertical
+        %ul.nav.pull-right
+          %li.divider-vertical
+          %li.dropdown.customhovercolor
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              Sign In
+              %i.icon-caret-down
+            .dropdown-menu{style: "padding: 15px; padding-bottom: 0px;"}
+              %form
+                = text_field_tag 'uname', 'Username'
+                = text_field_tag 'pwd', 'Password'
+                = submit_tag "Log In to CHAD Services", :class => "btn btn-success btn-lg"
+          %li.divider-vertical
