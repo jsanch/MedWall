@@ -1,5 +1,7 @@
 MyMedWallRails::Application.routes.draw do
   
+  devise_for :users
+
   resources :providers do
     resources :locations
     collection { get :search }

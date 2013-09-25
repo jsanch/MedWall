@@ -10,7 +10,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand{href: "http://localhost:3000"} MyMedWall CHAD Services
+      %a.brand{href: "#{url_for :controller=>'/pages', :action=>'index'}"} MyMedWall CHAD Services
       .nav-collapse.collapse
         %ul.nav
           %li.divider-vertical
@@ -18,20 +18,17 @@
             %a{href: ""} Patients
           %li.divider-vertical
           %li{class: "customhovercolor #{'active' if params[:controller] == 'providers'}"}
-            %a{href: "providers"} Providers
+            %a{href: "#{url_for :controller=>'/providers', :action=>'index'}"} Providers
           %li.divider-vertical
           %li{class: "customhovercolor #{'active' if params[:controller] == 'partners'}"}
-            %a{href: "partners"} Partners
+            %a{href: "#{url_for :controller=>'/partners', :action=>'index'}"} Partners
           %li.divider-vertical
         %ul.nav.pull-right
           %li.divider-vertical
-          %li.dropdown.customhovercolor
-            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Sign In
-              %i.icon-caret-down
-            .dropdown-menu{style: "padding: 15px; padding-bottom: 0px;"}
-              %form
-                = text_field_tag 'uname', 'Username'
-                = text_field_tag 'pwd', 'Password'
-                = submit_tag "Log In to CHAD Services", :class => "btn btn-success btn-lg"
+          - if user_signed_in?
+            %li{class: "customhovercolor #{'active' if params[:controller] == 'devise/registrations' && params[:action] == 'edit'}"}
+              = link_to 'Edit Profile', edit_user_registration_path
+          - else
+            %li{class: "customhovercolor #{'active' if params[:controller] == 'devise/sessions' && params[:action] == 'new'}"}
+              %a{href: "#{url_for :controller=>'/devise/sessions', :action=>'new'}"} Sign In
           %li.divider-vertical

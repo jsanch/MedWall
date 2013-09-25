@@ -14,7 +14,7 @@
           Location
     %tbody
       - @providers.each do |provider|
-        %tr{:onclick => "document.location = 'providers/#{provider.id}';"}
+        %tr{:onclick => "document.location = '#{ url_for :controller => 'providers', :action => 'index' }/#{provider.id}';"}
           %td
             = provider.name
           %td
